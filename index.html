@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCANDMUN 2026 – GA Preparation Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2a44;
+    --navy-mid: #1b3a5c;
+    --slate: #2d4a6a;
+    --sky: #4a90c4;
+    --ice: #d6e8f5;
+    --ice-light: #eaf3fa;
+    --cream: #faf8f5;
+    --warm: #f5efe8;
+    --gold: #c8982c;
+    --gold-light: #f5ecd4;
+    --text: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #7a7a7a;
+    --success: #2d8a56;
+    --success-bg: #e8f5ee;
+    --border: #ddd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(74,144,196,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .site-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+  .site-header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 400;
+    position: relative;
+  }
+  .site-header .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  /* Navigation */
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .tab-btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active {
+    color: var(--navy);
+  }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--sky);
+    border-radius: 3px 3px 0 0;
+  }
+
+  /* Main content */
+  .main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Section headers */
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin: 2rem 0 0.5rem;
+  }
+  .section-title:first-child { margin-top: 0; }
+  .section-desc {
+    color: var(--text-mid);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sky);
+    margin-bottom: 0.4rem;
+  }
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--navy);
+  }
+  .card p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .card a {
+    color: var(--sky);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .card a:hover { text-decoration: underline; }
+
+  /* Link lists */
+  .link-group {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .link-group-header {
+    background: var(--ice-light);
+    padding: 0.75rem 1.25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--navy);
+    border-bottom: 1px solid var(--border);
+  }
+  .link-item {
+    display: flex;
+    align-items: center;
+    padding: 0.65rem 1.25rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.88rem;
+    gap: 0.75rem;
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-item .icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; }
+  .link-item a {
+    color: var(--sky);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .link-item a:hover { text-decoration: underline; }
+  .link-item .tag {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .tag-treaty { background: var(--gold-light); color: var(--gold); }
+  .tag-resolution { background: var(--ice); color: var(--sky); }
+  .tag-org { background: var(--success-bg); color: var(--success); }
+  .tag-tool { background: #f0e8f5; color: #7a4aad; }
+
+  /* Country section */
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .country-slot {
+    background: white;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 0.85rem;
+  }
+  .country-slot .slot-label {
+    font-weight: 700;
+    color: var(--navy-mid);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  .country-slot .slot-hint {
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+  .placeholder-note {
+    background: var(--gold-light);
+    border-left: 4px solid var(--gold);
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 6px 6px 0;
+    color: var(--text-mid);
+  }
+
+  /* Checklist */
+  .checklist {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .checklist-header {
+    background: var(--navy);
+    color: white;
+    padding: 0.85rem 1.25rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .check-item:hover { background: var(--ice-light); }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type="checkbox"] {
+    margin-top: 0.2rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--sky);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check-item label { cursor: pointer; flex: 1; }
+  .check-label-main {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    display: block;
+  }
+  .check-label-sub {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    display: block;
+    margin-top: 0.15rem;
+  }
+  .check-item.checked .check-label-main {
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+
+  /* Timeline badge */
+  .timeline-badge {
+    display: inline-block;
+    background: var(--ice);
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+  }
+
+  /* Topic tabs within documentation */
+  .topic-toggle {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .topic-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border);
+    background: white;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .topic-btn.active {
+    border-color: var(--sky);
+    background: var(--ice-light);
+    color: var(--navy);
+  }
+  .topic-section { display: none; }
+  .topic-section.active { display: block; }
+
+  /* Example country report */
+  .example-banner {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+    color: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .example-banner .icon { font-size: 1.5rem; }
+  .example-banner h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+  .example-banner p { font-size: 0.85rem; opacity: 0.85; margin: 0.15rem 0 0; }
+  .example-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .example-body h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 1.5rem 0 0.4rem;
+  }
+  .example-body h4:first-child { margin-top: 0; }
+  .example-body p, .example-body li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .example-body ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+  .example-body li { margin-bottom: 0.3rem; }
+
+  .fact-row {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0.5rem 0;
+    font-size: 0.88rem;
+  }
+  .fact-row:last-child { border-bottom: none; }
+  .fact-label {
+    font-weight: 600;
+    color: var(--navy);
+    width: 180px;
+    flex-shrink: 0;
+  }
+  .fact-value { color: var(--text-mid); flex: 1; }
+
+  .insight-box {
+    background: var(--gold-light);
+    border-left: 4px solid var(--gold);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .insight-box strong { color: var(--navy); }
+
+  .connection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+  }
+  @media (max-width: 640px) { .connection-grid { grid-template-columns: 1fr; } }
+  .connection-card {
+    background: var(--ice-light);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    border: 1px solid #dde8f0;
+  }
+  .connection-card .conn-topic {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .conn-t1 { color: #c04040; }
+  .conn-t2 { color: #2d6a8a; }
+  .connection-card p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .site-footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    .site-header h1 { font-size: 1.8rem; }
+    .tab-btn { padding: 0.75rem 0.75rem; font-size: 0.8rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .country-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="badge">Student Preparation Portal</div>
+  <h1>SCANDMUN 2026</h1>
+  <p class="subtitle">General Assembly &mdash; Delegate Preparation Hub</p>
+</header>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="docs">Documentation</button>
+  <button class="tab-btn" data-tab="countries">Countries</button>
+  <button class="tab-btn" data-tab="checklist">Preparation Checklist</button>
+</nav>
+
+<main class="main">
+
+  <!-- ==================== DOCUMENTATION TAB ==================== -->
+  <div id="docs" class="tab-content active">
+
+    <h2 class="section-title">International Documentation</h2>
+    <p class="section-desc">All the key treaties, resolutions, and organisational links you need for both topics. Use the toggle below to filter by topic.</p>
+
+    <div class="topic-toggle">
+      <button class="topic-btn active" data-topic="all">All</button>
+      <button class="topic-btn" data-topic="t1">Topic 1: Abortion</button>
+      <button class="topic-btn" data-topic="t2">Topic 2: Child Soldiers</button>
+    </div>
+
+    <!-- Treaties & Conventions -->
+    <div class="link-group">
+      <div class="link-group-header">Treaties &amp; Conventions</div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">📜</span>
+        <div><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-elimination-all-forms-discrimination-against-women" target="_blank">Convention on the Elimination of All Forms of Discrimination Against Women (CEDAW)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">📜</span>
+        <div><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/convention-rights-child" target="_blank">Convention on the Rights of the Child (CRC)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">📜</span>
+        <div><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/optional-protocol-convention-rights-child-involvement-children" target="_blank">Optional Protocol on Children in Armed Conflict (OPAC)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">📜</span>
+        <div><a href="https://www.icc-cpi.int/resource-library/documents/rs-eng.pdf" target="_blank">Rome Statute of the ICC &mdash; Article 8</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">📜</span>
+        <div><a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank">Universal Declaration of Human Rights (UDHR)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">📜</span>
+        <div><a href="https://www.unfpa.org/icpd" target="_blank">ICPD Programme of Action (Cairo 1994)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">📜</span>
+        <div><a href="https://www.unicef.org/mali/media/1561/file/parisprinciples.pdf" target="_blank">The Paris Principles (2007)</a></div>
+        <span class="tag tag-treaty">Treaty</span>
+      </div>
+    </div>
+
+    <!-- GA Resolutions -->
+    <div class="link-group">
+      <div class="link-group-header">General Assembly Resolutions</div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/74/20" target="_blank">A/RES/74/20 (2020)</a> &mdash; Universal access to safe abortion &amp; reproductive healthcare</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/77/193" target="_blank">A/RES/77/193 (2022)</a> &mdash; Provisions for safe abortion access</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/70/1" target="_blank">A/RES/70/1 (2015)</a> &mdash; SDGs including reproductive healthcare</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/78/187" target="_blank">A/RES/78/187</a> &mdash; Protection of children in armed conflict</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/68/189" target="_blank">A/RES/68/189</a> &mdash; Elimination of violence against children</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🗳️</span>
+        <div><a href="https://undocs.org/A/RES/51/77" target="_blank">A/RES/51/77</a> &mdash; Special Representative on children &amp; armed conflict</div>
+        <span class="tag tag-resolution">GA Res</span>
+      </div>
+    </div>
+
+    <!-- Security Council Resolutions -->
+    <div class="link-group">
+      <div class="link-group-header">Security Council Resolutions (for reference)</div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🛡️</span>
+        <div><a href="https://undocs.org/S/RES/2122(2013)" target="_blank">S/RES/2122 (2013)</a> &mdash; Reproductive healthcare for sexual violence survivors</div>
+        <span class="tag tag-resolution">SC Res</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🛡️</span>
+        <div><a href="https://undocs.org/S/RES/2106(2013)" target="_blank">S/RES/2106 (2013)</a> &mdash; Safe abortion as critical need</div>
+        <span class="tag tag-resolution">SC Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🛡️</span>
+        <div><a href="https://undocs.org/S/RES/2601(2021)" target="_blank">S/RES/2601 (2021)</a> &mdash; Attacks on schools &amp; education in conflict</div>
+        <span class="tag tag-resolution">SC Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🛡️</span>
+        <div><a href="https://undocs.org/S/RES/2427(2018)" target="_blank">S/RES/2427 (2018)</a> &mdash; Framework for child protection in conflict</div>
+        <span class="tag tag-resolution">SC Res</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🛡️</span>
+        <div><a href="https://undocs.org/S/RES/2764(2024)" target="_blank">S/RES/2764 (2024)</a> &mdash; Child protection in UN peace operations</div>
+        <span class="tag tag-resolution">SC Res</span>
+      </div>
+    </div>
+
+    <!-- Organisations -->
+    <div class="link-group">
+      <div class="link-group-header">Key Organisations</div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🏥</span>
+        <div><a href="https://www.who.int/health-topics/abortion" target="_blank">World Health Organization (WHO) &mdash; Abortion</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🌍</span>
+        <div><a href="https://www.unfpa.org" target="_blank">United Nations Population Fund (UNFPA)</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">⚖️</span>
+        <div><a href="https://reproductiverights.org/maps/worlds-abortion-laws/" target="_blank">Center for Reproductive Rights &mdash; World Abortion Laws Map</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">🌐</span>
+        <div><a href="https://www.ippf.org" target="_blank">International Planned Parenthood Federation (IPPF)</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t1 t2">
+        <span class="icon">📢</span>
+        <div><a href="https://www.amnesty.org" target="_blank">Amnesty International</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">👶</span>
+        <div><a href="https://www.unicef.org/protection/children-recruited-by-armed-forces" target="_blank">UNICEF &mdash; Children in Armed Forces</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🔍</span>
+        <div><a href="https://www.hrw.org" target="_blank">Human Rights Watch (HRW)</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">❌</span>
+        <div><a href="https://childrenandarmedconflict.un.org/" target="_blank">UN Office: Children and Armed Conflict</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+      <div class="link-item" data-topics="t2">
+        <span class="icon">🏛️</span>
+        <div><a href="https://www.icj-cij.org" target="_blank">International Court of Justice (ICJ)</a></div>
+        <span class="tag tag-org">Org</span>
+      </div>
+    </div>
+
+    <!-- Research Tools -->
+    <div class="link-group">
+      <div class="link-group-header">Research Tools &amp; Databases</div>
+      <div class="link-item" data-topics="t1 t2">
+        <span class="icon">📚</span>
+        <div><a href="https://tbinternet.ohchr.org/" target="_blank">UN Treaty Body Database</a></div>
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <div class="link-item" data-topics="t1 t2">
+        <span class="icon">📚</span>
+        <div><a href="https://digitallibrary.un.org/" target="_blank">UN Digital Library</a></div>
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <div class="link-item" data-topics="t1 t2">
+        <span class="icon">📚</span>
+        <div><a href="https://www.ohchr.org" target="_blank">UN Office of the High Commissioner for Human Rights</a></div>
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <div class="link-item" data-topics="t1">
+        <span class="icon">📚</span>
+        <div><a href="https://abortion-policies.srhr.org/" target="_blank">WHO Global Abortion Policies Database</a></div>
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <div class="link-item" data-topics="t1 t2">
+        <span class="icon">📚</span>
+        <div><a href="https://www.rightdocs.org" target="_blank">RightDocs &mdash; Check voting records on resolutions</a></div>
+        <span class="tag tag-tool">Tool</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== COUNTRIES TAB ==================== -->
+  <div id="countries" class="tab-content">
+    <h2 class="section-title">Assigned Countries</h2>
+    <div class="placeholder-note">
+      <strong>Coming soon:</strong> Country assignments have not been finalised yet. Once your teacher receives the allocations, they will be added here. In the meantime, you can use the preparation checklist to get started on general research.
+    </div>
+
+    <p class="section-desc">Each delegate will represent one of the countries below. Click on your country once assigned to access quick links to your nation's UN mission, foreign ministry, and voting records.</p>
+
+    <div class="country-grid">
+      <div class="country-slot"><span class="slot-label">Country 1</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 2</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 3</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 4</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 5</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 6</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 7</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 8</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 9</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 10</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 11</span><span class="slot-hint">TBA</span></div>
+      <div class="country-slot"><span class="slot-label">Country 12</span><span class="slot-hint">TBA</span></div>
+    </div>
+
+    <h2 class="section-title">Country Research Guide</h2>
+    <p class="section-desc">Once you know your country, research these areas to build your country profile.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Geography &amp; Culture</div>
+        <h3>Know Your Nation</h3>
+        <p>Official name, region, population, ethnic composition, languages, religion, and quality of life.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Politics &amp; Government</div>
+        <h3>Political System</h3>
+        <p>Government type, key leaders, allies and adversaries, military size, and regional alliances.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Economy</div>
+        <h3>Economic Profile</h3>
+        <p>GDP, major industries, imports/exports, trading partners, currency, and development status.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Policy Position</div>
+        <h3>Stance on Topics</h3>
+        <p>National laws on abortion and child soldiers, voting records on relevant UN resolutions, and public statements.</p>
+      </div>
+    </div>
+
+    <!-- ===== EXAMPLE COUNTRY REPORT ===== -->
+    <h2 class="section-title">Worked Example: Republic of Nicaragua</h2>
+    <p class="section-desc">This example shows you <em>how</em> to research a country and, more importantly, <em>why</em> each piece of information matters for the two GA topics. Use this as a model when preparing your own country.</p>
+
+    <div class="example-banner">
+      <span class="icon">🇳🇮</span>
+      <div>
+        <h3>Republic of Nicaragua</h3>
+        <p>Central America &bull; Population ~7 million &bull; Capital: Managua</p>
+      </div>
+    </div>
+    <div class="example-body">
+
+      <!-- GEOGRAPHY & CULTURE -->
+      <h4>Geography &amp; Culture</h4>
+      <div class="fact-row"><span class="fact-label">Official name</span><span class="fact-value">Republic of Nicaragua</span></div>
+      <div class="fact-row"><span class="fact-label">Region</span><span class="fact-value">Central America, bordered by Honduras and Costa Rica</span></div>
+      <div class="fact-row"><span class="fact-label">Population</span><span class="fact-value">~7 million</span></div>
+      <div class="fact-row"><span class="fact-label">Religion</span><span class="fact-value">Predominantly Roman Catholic (~47%), with growing Protestant/Evangelical population (~33%)</span></div>
+      <div class="fact-row"><span class="fact-label">Languages</span><span class="fact-value">Spanish (official), Indigenous languages on the Caribbean coast (Miskito, Sumo)</span></div>
+      <div class="fact-row"><span class="fact-label">HDI ranking</span><span class="fact-value">Low-to-medium human development; one of the poorest countries in the Western Hemisphere</span></div>
+
+      <div class="insight-box">
+        <strong>💡 Why does this matter?</strong> Nicaragua&rsquo;s strong Catholic identity is central to understanding its abortion policy. The research report notes that the Christian church views abortion as a grave moral sin, and in Nicaragua, the Catholic Church is a powerful political actor. The 2006 total abortion ban was passed shortly before elections, widely understood as part of a political deal between President Ortega and the Church. When writing your country report, always ask: <em>&ldquo;How does religion or culture shape my country&rsquo;s stance on the GA topics?&rdquo;</em>
+      </div>
+
+      <!-- POLITICS & GOVERNMENT -->
+      <h4>Politics &amp; Government</h4>
+      <div class="fact-row"><span class="fact-label">Government type</span><span class="fact-value">Presidential republic (authoritarian tendencies under current government)</span></div>
+      <div class="fact-row"><span class="fact-label">Current leader</span><span class="fact-value">President Daniel Ortega (Sandinista National Liberation Front / FSLN)</span></div>
+      <div class="fact-row"><span class="fact-label">Key alliances</span><span class="fact-value">ALBA bloc (Venezuela, Cuba), generally aligned with Russia and China in UN voting</span></div>
+      <div class="fact-row"><span class="fact-label">Relations with the West</span><span class="fact-value">Strained; subject to US and EU sanctions over human rights concerns</span></div>
+      <div class="fact-row"><span class="fact-label">History of conflict</span><span class="fact-value">Sandinista Revolution (1979), Contra War (1981&ndash;1990) &mdash; Cold War proxy conflict</span></div>
+
+      <div class="insight-box">
+        <strong>💡 Why does this matter?</strong> Government type tells you <em>how decisions are made</em> and <em>how likely your country is to change policy</em>. Nicaragua&rsquo;s centralised, authoritarian governance means that policy on abortion and child protection reflects the president&rsquo;s priorities, not a free legislative debate. It also means Nicaragua is unlikely to accept international &ldquo;interference&rdquo; in domestic policy &mdash; delegates should expect to emphasise national sovereignty. For child soldiers, the Contra War is critical: both sides used child combatants, making Nicaragua a country with direct historical experience of this issue.
+      </div>
+
+      <!-- ECONOMY -->
+      <h4>Economy</h4>
+      <div class="fact-row"><span class="fact-label">GDP per capita</span><span class="fact-value">~$2,300 (one of the lowest in Latin America)</span></div>
+      <div class="fact-row"><span class="fact-label">Key sectors</span><span class="fact-value">Agriculture (coffee, tobacco, sugar), textiles, tourism</span></div>
+      <div class="fact-row"><span class="fact-label">Poverty rate</span><span class="fact-value">~25% living below the poverty line, higher in rural areas</span></div>
+      <div class="fact-row"><span class="fact-label">Healthcare spending</span><span class="fact-value">Low; limited rural healthcare infrastructure</span></div>
+
+      <div class="insight-box">
+        <strong>💡 Why does this matter?</strong> Economic data helps you understand <em>what your country can realistically commit to</em>. Nicaragua cannot fund large-scale reproductive health programmes without international support, which shapes what kind of clauses your delegate would support or oppose. For child soldiers, poverty is identified in the research report as a primary push factor &mdash; Nicaragua&rsquo;s high poverty rate and history of conflict explain why children were historically vulnerable to recruitment. When drafting clauses, consider: <em>&ldquo;Does my country need financial assistance to implement this?&rdquo;</em>
+      </div>
+
+      <!-- TOPIC CONNECTIONS -->
+      <h4>Connecting Country Facts to the Topics</h4>
+      <p>This is the most important step: drawing lines between what you know about your country and the specific GA topics. Here&rsquo;s how each fact about Nicaragua connects:</p>
+
+      <div class="connection-grid">
+        <div class="connection-card">
+          <div class="conn-topic conn-t1">Topic 1: Abortion</div>
+          <p><strong>Total ban since 2006.</strong> Nicaragua criminalises all abortion without exception &mdash; even when the mother&rsquo;s life is at risk or the pregnancy results from rape. Women face up to 2 years in prison; doctors face up to 6 years. This is one of the most restrictive policies in the world.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t2">Topic 2: Child Soldiers</div>
+          <p><strong>Historical use during the Contra War.</strong> Both the Sandinista government and US-backed Contra rebels used child soldiers in the 1980s conflict. Nicaragua has since ratified the CRC and acceded to the OPAC in 2005, setting 18 as the minimum military recruitment age.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t1">Topic 1: International pressure</div>
+          <p><strong>Repeated UN criticism.</strong> CEDAW and the Human Rights Committee have found Nicaragua&rsquo;s total ban violates international human rights law. In January 2025, the HRC ruled in two cases (<em>Luc&iacute;a</em> and <em>Susana</em>) that Nicaragua&rsquo;s absolute criminalisation was incompatible with human rights obligations.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t2">Topic 2: Current status</div>
+          <p><strong>No current child soldier problem.</strong> Nicaragua&rsquo;s armed forces report no under-18 recruits today. However, Nicaragua&rsquo;s experience gives it a credible voice on rehabilitation and reintegration &mdash; and on why poverty reduction is essential to prevention.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t1">Topic 1: The &ldquo;why&rdquo; behind the ban</div>
+          <p><strong>Religion + political power.</strong> The ban was a political deal between President Ortega and the Catholic Church before the 2006 election. This shows how the research report&rsquo;s point about religion affecting policy plays out in practice &mdash; even when polling shows ~69% of Nicaraguans supported therapeutic abortion.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t2">Topic 2: Root causes</div>
+          <p><strong>Poverty and instability.</strong> The research report identifies poverty, political instability, and lack of education as key push factors. Nicaragua experienced all three during the Contra War era, which is why children were drawn into the conflict on both sides.</p>
+        </div>
+      </div>
+
+      <!-- TREATY STATUS -->
+      <h4>Treaty Ratification Status</h4>
+      <p>Always check which treaties your country has ratified &mdash; this tells you what they have <em>already committed to</em> and what you can hold them to in debate.</p>
+
+      <div class="fact-row"><span class="fact-label">CEDAW</span><span class="fact-value">✅ Ratified (1981) &mdash; but the abortion ban contradicts CEDAW Committee recommendations</span></div>
+      <div class="fact-row"><span class="fact-label">CRC</span><span class="fact-value">✅ Ratified (1990) &mdash; committed to protecting children&rsquo;s rights to safety and education</span></div>
+      <div class="fact-row"><span class="fact-label">CRC-OPAC</span><span class="fact-value">✅ Acceded (2005) &mdash; declared minimum military recruitment age of 18</span></div>
+      <div class="fact-row"><span class="fact-label">Rome Statute (ICC)</span><span class="fact-value">❌ Not ratified &mdash; limits international accountability mechanisms</span></div>
+
+      <div class="insight-box">
+        <strong>💡 Why does this matter?</strong> Nicaragua has ratified CEDAW but maintains a total abortion ban &mdash; this is a <em>contradiction</em> that other delegates can challenge in debate. As the Nicaraguan delegate, you would need to argue that national sovereignty allows the state to interpret CEDAW within its own cultural and legal framework. On child soldiers, Nicaragua&rsquo;s ratification of both the CRC and OPAC means it has strong legal commitments to support &mdash; use this to argue for strengthening prevention programmes.
+      </div>
+
+      <!-- WHAT THE DELEGATE WOULD ARGUE -->
+      <h4>What Would a Nicaraguan Delegate Argue?</h4>
+      <div class="connection-grid">
+        <div class="connection-card">
+          <div class="conn-topic conn-t1">On Abortion</div>
+          <p>Nicaragua would likely <strong>resist</strong> any resolution that frames abortion access as a human right. The delegate might argue for national sovereignty over reproductive policy, emphasise the right to life from conception, and redirect the conversation toward maternal healthcare and reducing poverty as alternatives. However, the delegate would be under pressure given repeated UN findings against Nicaragua&rsquo;s total ban.</p>
+        </div>
+        <div class="connection-card">
+          <div class="conn-topic conn-t2">On Child Soldiers</div>
+          <p>Nicaragua would likely <strong>support</strong> strong measures against child recruitment, citing its own experience during the Contra War and its ratification of the CRC and OPAC. The delegate could advocate for poverty reduction and education as prevention strategies, and call for rehabilitation programmes funded by the international community &mdash; aligning with its need for development assistance.</p>
+        </div>
+      </div>
+
+      <div class="insight-box" style="background: var(--success-bg); border-left-color: var(--success);">
+        <strong>🎯 Key lesson:</strong> Notice how the same country can be <em>conservative</em> on one topic and <em>progressive</em> on another. Your research should help you understand the <em>reasons</em> behind each position &mdash; religion, history, economics, political alliances &mdash; not just what the position is. This is what makes a strong MUN delegate: understanding the <em>why</em>.
+      </div>
+
+    </div>
+    <!-- ===== END EXAMPLE ===== -->
+
+  </div>
+  <div id="checklist" class="tab-content">
+    <h2 class="section-title">Delegate Preparation Checklist</h2>
+    <p class="section-desc">Follow this checklist to ensure you are fully prepared for the General Assembly at SCANDMUN 2026. Check off items as you complete them.</p>
+
+    <div class="checklist">
+      <div class="checklist-header">📖 Phase 1: Read &amp; Understand (Weeks 4&ndash;6 before)</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Read both GA Research Reports</span>
+          <span class="check-label-sub">Topic 1: The Question of Abortion &bull; Topic 2: The Question of Child Soldiers</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Read the SCANDMUN Rules and Procedure</span>
+          <span class="check-label-sub">Focus on the General Assembly section: lobbying, debate, speeches, amendments, motions, and voting</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Read the sample resolution and clause writing guide</span>
+          <span class="check-label-sub">Understand the SMART framework, formatting rules, and GA-appropriate language</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-header">🌍 Phase 2: Research Your Country (Weeks 3&ndash;4 before)</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Complete a Country Profile</span>
+          <span class="check-label-sub">Official name, geography, government, economy, culture &mdash; use the Country Research Guide above</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Research your country's position on Topic 1 (Abortion)</span>
+          <span class="check-label-sub">National laws, permitted grounds, healthcare access, religious/cultural context</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Research your country's position on Topic 2 (Child Soldiers)</span>
+          <span class="check-label-sub">Ratification of CRC/OPAC, any domestic incidents, support for international programmes</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Check your country's voting record on relevant resolutions</span>
+          <span class="check-label-sub">Use RightDocs and the UN Digital Library to find how your country voted</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-header">📝 Phase 3: Draft Your Materials (Weeks 2&ndash;3 before)</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Draft 3&ndash;5 preambulatory clauses for each topic</span>
+          <span class="check-label-sub">Reference relevant treaties, resolutions, and context. Each ends with a comma.</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Draft 3&ndash;5 operative clauses for each topic</span>
+          <span class="check-label-sub">Use SMART criteria: Specific, Measurable, Achievable, Relevant, Time-bound. GA language only (no "Demands").</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Identify potential allies and blocs</span>
+          <span class="check-label-sub">Which countries share your position? Who might you lobby during unmoderated caucus?</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-header">🎤 Phase 4: Prepare to Speak (1 week before)</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Write an opening speech for each topic</span>
+          <span class="check-label-sub">Use the Hook &rarr; Point &rarr; Call to Action structure. Keep to 1&ndash;2 minutes.</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Prepare 3&ndash;5 Points of Information to ask other delegates</span>
+          <span class="check-label-sub">Must be phrased as questions. Challenge positions that conflict with your country's stance.</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Practise your speech aloud</span>
+          <span class="check-label-sub">Time yourself. Practise with a partner if possible. Project your voice clearly.</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Organise your research binder</span>
+          <span class="check-label-sub">Print key documents, research reports, your clauses, and this checklist. Have everything accessible.</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-header">✅ Final Check (Day before)</div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Review the Rules and Procedure one more time</span>
+          <span class="check-label-sub">Know how to yield, how to propose amendments, and what motions are available to you</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Confirm you know your country's official name</span>
+          <span class="check-label-sub">Use the official names list &mdash; e.g. "Republic of France" not just "France"</span>
+        </label>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label>
+          <span class="check-label-main">Dress appropriately and arrive on time</span>
+          <span class="check-label-sub">Western business attire or national dress. Be ready for the opening ceremony.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  SCANDMUN 2026 &mdash; General Assembly Delegate Preparation Hub
+</footer>
+
+<script>
+  // Tab navigation
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Topic filtering in documentation tab
+  document.querySelectorAll('.topic-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const topic = btn.dataset.topic;
+      document.querySelectorAll('.link-item[data-topics]').forEach(item => {
+        if (topic === 'all' || item.dataset.topics.includes(topic)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Checklist toggle
+  function toggleCheck(el) {
+    const cb = el.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    el.classList.toggle('checked', cb.checked);
+  }
+</script>
+</body>
+</html>
